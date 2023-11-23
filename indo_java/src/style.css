@@ -1,0 +1,82 @@
+
+@font-face {
+    font-family: "Open Sans Light";
+    src: url("./static/OpenSans-Light.ttf");
+}
+
+@font-face {
+    font-family: "Open Sans Regular";
+    src: url("./static/OpenSans-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Open Sans Medium";
+    src: url("./static/OpenSans-Medium.ttf");
+}
+
+@font-face {
+    font-family: "Open Sans Bold";
+    src: url("./static/OpenSans-Bold.ttf");
+}
+
+* {
+  -fx-margin: 0;
+  -fx-padding: 0;
+  -fx-box-sizing: border-box;
+  /* -fx-font-family: "Open Sans Regular"; */
+}
+
+.inputbox{
+    /* -fx-border: 5px solid black; */
+    -fx-text-box-border: black ;
+    -fx-focus-color: rgb(82, 82, 255) ;
+}
+
+.light{
+    -fx-font-family: "Open Sans Light";
+}
+
+.regular{
+    -fx-font-family: "Open Sans Regular";
+}
+
+.medium{
+    -fx-font-family: "Open Sans Medium";
+}
+
+.bold{
+    -fx-font-family: "Open Sans Bold";
+}
+
+.button{
+    -fx-font-size: 18px;
+    -fx-background-color: rgb(0, 132, 255);
+    /* -fx-cursor: pointer; */
+    -fx-color: white
+    /* -fx-transition: all 0.5s ease; */
+}
+
+.button:hover{
+    -fx-background-color: rgb(0, 82, 255);
+    /* -fx-animation: changeColor 1s linear forwards; */
+}
+
+.container{
+    -fx-background-color: rgb(0, 82, 255);
+}
+
+
+.home-image {
+  -fx-position: relative;
+  -fx-background-image: url("home-image.jpg") no-repeat center;
+  -fx-background-size: cover;
+  -fx-background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* .home-image::before{
+
+} */
+
+.sidebar{
+    -fx-background-color: #7435FB;
+}
