@@ -93,10 +93,11 @@
     -fx-background-color: #7435fb;
 }
 
+.header{
+    -fx-background-color: #FB7135;
+    -fx-padding:0 0 0 30px;
+}
+
 .font-xl {
     -fx-font-size: 25px;
 }
-
-/* .home-image::before{
-
-} */
