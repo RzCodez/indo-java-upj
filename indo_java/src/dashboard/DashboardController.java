@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 
-public class Dashboard {
+public class DashboardController {
 
     @FXML
     private ResourceBundle resources;
@@ -15,7 +15,7 @@ public class Dashboard {
     private URL location;
 
     @FXML
-    private Button btnDashboard;
+    public static Button btnDashboard;
 
     @FXML
     void hover(MouseEvent event) {
@@ -24,7 +24,7 @@ public class Dashboard {
 
     @FXML
     void initialize() {
-
+        assert btnDashboard != null : "fx:id=\"btnDashboard\" was not injected: check your FXML file 'Dashboard.fxml'.";
     }
 
 }

@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1300.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dashboard.Dashboard">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1300.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dashboard.DashboardController">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="800.0" prefWidth="267.0" styleClass="sidebar">
          <children>
@@ -22,35 +21,51 @@
                   </ImageView>
                </children>
             </Pane>
-            <Button mnemonicParsing="false" prefHeight="83.0" prefWidth="450.0" text="Dashboard" textFill="WHITE">
-               <styleClass>
-                  <String fx:value="btn-active" />
-                  <String fx:value="bold" />
-                  <String fx:value="font-xl" />
-               </styleClass>
-               <font>
-                  <Font size="48.0" />
-               </font></Button>
-            <Button mnemonicParsing="false" onMouseEntered="#hover" prefHeight="83.0" prefWidth="450.0" text="Transaksi" textFill="WHITE">
-               <styleClass>
-                  <String fx:value="btn-dashboard" />
-                  <String fx:value="bold" />
-                  <String fx:value="font-xl" />
-               </styleClass>
-               <font>
-                  <Font size="48.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" onMouseEntered="#hover" prefHeight="83.0" prefWidth="450.0" text="Dashboard" textFill="WHITE">
-               <styleClass>
-                  <String fx:value="btn-dashboard" />
-                  <String fx:value="bold" />
-                  <String fx:value="font-xl" />
-               </styleClass>
-               <font>
-                  <Font size="48.0" />
-               </font>
-            </Button>
+            <AnchorPane prefHeight="101.0" prefWidth="267.0" styleClass="btn-active">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="37.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/dashboard.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="96.0" layoutY="34.0" prefHeight="36.0" prefWidth="139.0" text="Dashboard" textFill="WHITE">
+                     <styleClass>
+                        <String fx:value="bold" />
+                        <String fx:value="font-xl" />
+                     </styleClass>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="btnDashboard" prefHeight="101.0" prefWidth="267.0" styleClass="btn-dashboard">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="37.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/transaksi.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="96.0" layoutY="34.0" prefHeight="36.0" prefWidth="139.0" text="Transaksi" textFill="WHITE">
+                     <styleClass>
+                        <String fx:value="bold" />
+                        <String fx:value="font-xl" />
+                     </styleClass>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="101.0" prefWidth="267.0" styleClass="btn-dashboard">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="37.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/keluar.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="96.0" layoutY="34.0" prefHeight="36.0" prefWidth="139.0" text="Keluar" textFill="WHITE">
+                     <styleClass>
+                        <String fx:value="bold" />
+                        <String fx:value="font-xl" />
+                     </styleClass>
+                  </Label>
+               </children>
+            </AnchorPane>
          </children></VBox>
    </children>
 </AnchorPane>

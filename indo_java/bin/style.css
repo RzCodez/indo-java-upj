@@ -57,17 +57,17 @@
 
 .btn-dashboard {
     -fx-font-size: 18px;
-    -fx-background-color: rgb(116, 54, 250, 0);
+    -fx-background-color: #7436fa;
     -fx-color: white;
 }
 
-.btn-dashboard:hover{
-    -fx-background-color: rgb(116, 54, 250, 0.3);
+.btn-dashboard:hover {
+    -fx-background-color: #6e34eb;
 }
 
 .btn-active {
     -fx-font-size: 18px;
-    -fx-background-color: rgb(94, 34, 223);
+    -fx-background-color: #5e22df;
     /* -fx-cursor: pointer; */
     -fx-color: white;
     /* -fx-transition: all 0.5s ease; */
@@ -89,14 +89,13 @@
     -fx-background-color: rgba(0, 0, 0, 0.5);
 }
 
-.sidebar{
-    -fx-background-color: #7435FB;
+.sidebar {
+    -fx-background-color: #7435fb;
 }
 
-.font-xl{
+.font-xl {
     -fx-font-size: 25px;
 }
-
 
 /* .home-image::before{
 
