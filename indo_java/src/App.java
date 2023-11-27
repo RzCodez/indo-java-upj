@@ -3,37 +3,44 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
 public class App extends Application {
 
+    private Parent root;
+    private Scene scene;
+    private Stage stage;
     @Override
-    public void start(Stage primaryStage) throws Exception {
-
-        Parent root;
+    public void start(Stage stage) throws Exception {
         try {
+            root = FXMLLoader.load(getClass().getResource("/login/Login.fxml"));
+            scene = new Scene(root);
+            stage.setTitle("Indo Java - Powered by ODGJ");
+            stage.setScene(scene);
+            stage.show();
 
-            root = FXMLLoader.load(getClass().getResource("/dashboard/Dashboard.fxml"));
-
-            if (root == null) {
-                System.err.println("FXML file is null. Please check the file path and naming.");
-                return;
-            }
-
-            Scene scene = new Scene(root);
-            
-            primaryStage.setTitle("Indo Java - Powered by ODGJ");
-
-            primaryStage.setScene(scene);
-
-            primaryStage.show();
-
+            stage.setOnCloseRequest(e -> {
+                e.consume();
+                Logout(stage);
+            });
         } catch (IOException e) {
-
             e.printStackTrace();
         }
     }
 
+    public void Logout(Stage stage) {
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Logout");
+        alert.setHeaderText("Kamu akan Logout!");
+        alert.setContentText("Apakah anda ingin keluar?");
+        if (alert.showAndWait().get() == ButtonType.OK) {
+            System.out.println("Berhasil logout");
+            stage.close();
+        }
+    }
     public static void main(String[] args) {
         launch(args);
     }

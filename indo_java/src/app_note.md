@@ -4,52 +4,79 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
-// Kami mengimport library yang bermacam-macam seperti IOExeption, Application, FXMLLoader, dan Library Scene seperti Parent, Scene dan Stage.
+// Import package java.io.IOException untuk menghandle exception saat melakukan operasi input/output
+// Import package javafx.application.Application untuk membuat aplikasi JavaFX
+// Import class FXMLLoader dari package javafx.fxml untuk memuat file FXML
+// Import class Parent dari package javafx.scene untuk merepresentasikan node induk dari sebuah scene
+// Import class Scene dari package javafx.scene untuk merepresentasikan tampilan aplikasi JavaFX
+// Import class Alert dari package javafx.scene.control untuk membuat dialog box
+// Import class ButtonType dari package javafx.scene.control untuk merepresentasikan tombol pada dialog box
+// Import class Stage dari package javafx.stage untuk merepresentasikan jendela aplikasi JavaFX
 
-// IOExeption digunakan untuk menunjukkan kesalahan I/O. Kelas ini dapat terjadi saat terjadi kesalahan saat membaca atau menulis data dari atau ke perangkat I/O.
-
-// javafx.application.Application adalah kelas dasar untuk aplikasi JavaFX. Kelas ini menyediakan metode start(), yang digunakan untuk memulai aplikasi.
-
-// FXMLLoader adalah kelas yang digunakan untuk memuat file FXML.
-
-// Sedangkan untuk library scene, Parent adalah kelas dasar untuk semua node tampilan dalam scene JavaFX, Scene adalah kelas yang mewakili tampilan aplikasi JavaFX, dan Stage adalah kelas yang mewakili jendela aplikasi JavaFX.
-
-// public class App extends Application adalah Kelas App yang mewarisi kelas Application, yang merupakan kelas dasar untuk aplikasi JavaFX.
 
 
 public class App extends Application {
-
-    // @Override - public void start(Stage primaryStage) throws Exception merupakan metode utama yang dipanggil saat aplikasi dimulai. Parameter primaryStage mewakili jendela utama aplikasi.
+    // 1. 'root' bertipe Parent, digunakan untuk menyimpan node induk dari sebuah scene.
+    // 2. 'scene' bertipe Scene, digunakan untuk merepresentasikan tampilan aplikasi JavaFX.
+    // 3. 'stage' bertipe Stage, digunakan untuk merepresentasikan jendela aplikasi JavaFX.
+    private Parent root;
+    private Scene scene;
+    private Stage stage;
+    // Menggunakan anotasi @Override untuk menandakan bahwa metode ini merupakan peng-override metode dari kelas induknya (Application).
     @Override
-    public void start(Stage primaryStage) throws Exception {
-
-        // Kami menggunakan parent dengan nama variabel root akan menyimpan referensi ke root node dari scene pertama.
-        Parent root;
+    // Metode 'start' adalah metode yang dijalankan saat aplikasi JavaFX dimulai.
+    // Metode ini menerima parameter bertipe Stage yang digunakan untuk merepresentasikan jendela aplikasi JavaFX.
+    public void start(Stage stage) throws Exception {
         try {
-            // Kami menggunakan FXMLLoader untuk memuat file FXML.
-            root = FXMLLoader.load(getClass().getResource("/login/Login.fxml"));
-            // Kami menggunakan Scene untuk mewakili tampilan aplikasi JavaFX.
-            Scene scene = new Scene(root);
-            
-            // Menggunakan setTitle untuk mengatur judul jendela aplikasi.
-            primaryStage.setTitle("Indo Java - Powered by ODGJ");
-            // Menggunakan setScene untuk mengatur tampilan jendela aplikasi.
-            primaryStage.setScene(scene);
-            // Menggunakan show untuk menampilkan jendela aplikasi.
-            primaryStage.show();
-
-        // Jika terjadi kesalahan saat memuat file FXML, blok catch akan menampilkan kesalahan tersebut.
+            // Memuat file FXML dengan menggunakan FXMLLoader dan mengassign hasilnya ke variabel 'root'
+            root = FXMLLoader.load(getClass().getResource("/dashboard/Dashboard.fxml"));
+            // Membuat objek Scene dengan menggunakan 'root' sebagai node induk
+            scene = new Scene(root);
+            // Mengatur judul jendela aplikasi
+            stage.setTitle("Indo Java - Powered by ODGJ");
+            // Mengatur Scene pada Stage
+            stage.setScene(scene);
+            // Menampilkan jendela aplikasi
+            stage.show();
+            // Menangani event ketika jendela aplikasi ditutup
+            stage.setOnCloseRequest(e -> {
+                // e.consume() akan menghentikan event handler dari memproses event lebih lanjut.
+                e.consume();
+                // Memanggil method Logout dengan parameter stage
+                Logout(stage);
+            });
+        // Jika ada error maka error tersebut akan dicatch dan ditampilkan apa yang error dalam kompilasi
         } catch (IOException e) {
-
-            // printStackTrace digunakan untuk menampilkan stack trace dari kesalahan yang terjadi.
+            // Mencetak dan melacak lokasi error pada java
             e.printStackTrace();
         }
     }
+    // Method untuk Logout dengan parameter stage
+    public void Logout(Stage stage) {
+        // Menggunakan Method Alert dari JavaFX untuk membuat modal Alert Konfirmasi
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        // Membuat title pada Alert
+        alert.setTitle("Logout");
+        // Membuat heading text dalam modal
+        alert.setHeaderText("Kamu akan Logout!");
+        // Membuat deskripsi/konten teks dalam modal
+        alert.setContentText("Apakah anda ingin keluar?");
 
+        // Jika Menekan tombol OK pada Modal, akan menutup program secara menyeluruh
+        if (alert.showAndWait().get() == ButtonType.OK) {
+            System.out.println("Berhasil logout");
+            stage.close();
+        }
+    }
+
+    // Tujuan dari kode di bawah ini adalah untuk memulai aplikasi JavaFX. 
+    // Method `main` adalah entry point dari aplikasi JavaFX, yang akan dijalankan saat aplikasi dimulai.
+    // Pada baris pertama `launch(args)`, method `launch` digunakan untuk menjalankan aplikasi JavaFX dengan mengambil argumen `args` dari command line.
     public static void main(String[] args) {
-        // Kami menggunakan launch untuk memulai aplikasi JavaFX.
         launch(args);
     }
 }

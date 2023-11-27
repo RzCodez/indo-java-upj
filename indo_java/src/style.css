@@ -68,7 +68,6 @@
 .btn-active {
     -fx-font-size: 18px;
     -fx-background-color: #5e22df;
-    /* -fx-cursor: pointer; */
     -fx-color: white;
     /* -fx-transition: all 0.5s ease; */
 }
@@ -97,6 +96,11 @@
     -fx-background-color: #FB7135;
     -fx-padding:0 0 0 30px;
 }
+
+.welcome-container{
+    -fx-padding:0 0 0 20px;
+}
+
 
 .font-xl {
     -fx-font-size: 25px;

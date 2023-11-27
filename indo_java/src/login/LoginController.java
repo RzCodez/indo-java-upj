@@ -1,17 +1,27 @@
 package login;
 
-import java.net.URL;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
+
+import session.Session;
+
+// import dashboard.DashboardController;
+import dashboard.transaksi.TransaksiController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import javafx.scene.Node;
 
 public class LoginController {
 
@@ -22,33 +32,55 @@ public class LoginController {
     private PasswordField passwordInput;
 
     @FXML
-    private TextField usernameInput;
+    TextField usernameInput;
+
+    private Parent root;
+    private Scene scene;
+    private Stage stage;
 
     private static final String DB_URL = "jdbc:mysql://localhost:3306/db_barang";
 
-    @FXML
-    public void submit(ActionEvent event) {
+    public void submit(ActionEvent event) throws IOException {
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            System.out.println("Pesan Error : " + e);
+        }
+
         String username = usernameInput.getText();
         String password = passwordInput.getText();
 
         if (authenticateUser(username, password)) {
-            labelCheck.setText("Login Success");
-            labelCheck.setTextFill(javafx.scene.paint.Color.GREEN);
+            System.out.println("Login berhasil!");
+            System.out.println("Met datang, " + username + "!");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/dashboard/Dashboard.fxml"));
+            root = loader.load();
+            Session.setUsername(username);
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         } else {
-            labelCheck.setText("*Login Failed");
-            labelCheck.setTextFill(javafx.scene.paint.Color.RED);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Gagal Login");
+            alert.setHeaderText(null);
+            alert.setContentText("username atau password salah");
+            alert.showAndWait();
         }
+        
     }
 
+
     private boolean authenticateUser(String username, String password) {
-        try (Connection connection = DriverManager.getConnection(DB_URL);
-             PreparedStatement statement = connection.prepareStatement("SELECT * FROM users WHERE username = ? AND password = ?")) {
+        try (Connection connection = DriverManager.getConnection(DB_URL, "root", ""); 
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM `tabel_user` WHERE BINARY username = ? AND password = ?")) {
 
             statement.setString(1, username);
             statement.setString(2, password);
 
             try (ResultSet resultSet = statement.executeQuery()) {
-                return resultSet.next(); // Returns true if a matching user is found
+                return resultSet.next(); 
             }
         } catch (SQLException e) {
             e.printStackTrace();

@@ -8,8 +8,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1300.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dashboard.DashboardController">
+<AnchorPane fx:id="DashboardPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1300.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dashboard.DashboardController">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="800.0" prefWidth="267.0" styleClass="sidebar">
          <children>
@@ -37,7 +38,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="btnDashboard" prefHeight="101.0" prefWidth="267.0" styleClass="btn-dashboard">
+            <AnchorPane fx:id="transaksiButton" onMouseClicked="#transaksiCta" prefHeight="101.0" prefWidth="267.0" styleClass="btn-dashboard">
                <children>
                   <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="37.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -52,7 +53,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="101.0" prefWidth="267.0" styleClass="btn-dashboard">
+            <AnchorPane fx:id="keluarButton" onMouseClicked="#Logout" prefHeight="101.0" prefWidth="267.0" styleClass="btn-dashboard">
                <children>
                   <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="37.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -75,6 +76,19 @@
                   <Image url="@../assets/profile.png" />
                </image>
             </ImageView>
+            <VBox alignment="CENTER_LEFT" prefHeight="89.0" prefWidth="236.0" styleClass="welcome-container">
+               <children>
+                  <Label styleClass="light" text="Selamat Datang!" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <Label fx:id="namaUser" styleClass="medium" text="Kasir 1" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
          </children>
       </HBox>
    </children>

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="DashboardPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1300.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dashboard.DashboardController">
+<AnchorPane fx:id="TransaksiPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1300.0" stylesheets="@../../style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dashboard.DashboardController">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="800.0" prefWidth="267.0" styleClass="sidebar">
          <children>
@@ -18,7 +18,7 @@
                <children>
                   <ImageView fitHeight="89.0" fitWidth="147.0" layoutX="60.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Group%201.png" />
+                        <Image url="@../../Group%201.png" />
                      </image>
                   </ImageView>
                </children>
@@ -27,7 +27,7 @@
                <children>
                   <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="37.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../assets/dashboard.png" />
+                        <Image url="@../../assets/dashboard.png" />
                      </image>
                   </ImageView>
                   <Label layoutX="96.0" layoutY="34.0" prefHeight="36.0" prefWidth="139.0" text="Dashboard" textFill="WHITE">
@@ -42,7 +42,7 @@
                <children>
                   <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="37.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../assets/transaksi.png" />
+                        <Image url="@../../assets/transaksi.png" />
                      </image>
                   </ImageView>
                   <Label layoutX="96.0" layoutY="34.0" prefHeight="36.0" prefWidth="139.0" text="Transaksi" textFill="WHITE">
@@ -57,7 +57,7 @@
                <children>
                   <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="37.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../assets/keluar.png" />
+                        <Image url="@../../assets/keluar.png" />
                      </image>
                   </ImageView>
                   <Label layoutX="96.0" layoutY="34.0" prefHeight="36.0" prefWidth="139.0" text="Keluar" textFill="WHITE">
@@ -73,7 +73,7 @@
          <children>
             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../assets/profile.png" />
+                  <Image url="@../../assets/profile.png" />
                </image>
             </ImageView>
             <VBox alignment="CENTER_LEFT" prefHeight="89.0" prefWidth="236.0" styleClass="welcome-container">
@@ -82,7 +82,7 @@
                      <font>
                         <Font size="18.0" />
                      </font></Label>
-                  <Label fx:id="namaUser" styleClass="medium" text="Kasir 1" textFill="WHITE">
+                  <Label fx:id="namaUser" styleClass="medium" text="Jamal" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
