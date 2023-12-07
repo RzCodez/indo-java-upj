@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="DashboardPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1300.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dashboard.DashboardController">
+   <children>
+      <VBox alignment="TOP_CENTER" prefHeight="800.0" prefWidth="267.0" styleClass="sidebar">
+         <children>
+            <Pane prefHeight="169.0" prefWidth="267.0">
+               <children>
+                  <ImageView fitHeight="89.0" fitWidth="147.0" layoutX="60.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Group%201.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <AnchorPane prefHeight="101.0" prefWidth="267.0" styleClass="btn-active">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="37.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/dashboard.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="96.0" layoutY="34.0" prefHeight="36.0" prefWidth="139.0" text="Dashboard" textFill="WHITE">
+                     <styleClass>
+                        <String fx:value="bold" />
+                        <String fx:value="font-xl" />
+                     </styleClass>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="transaksiButton" onMouseClicked="#transaksiCta" prefHeight="101.0" prefWidth="267.0" styleClass="btn-dashboard">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="37.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/transaksi.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="96.0" layoutY="34.0" prefHeight="36.0" prefWidth="139.0" text="Transaksi" textFill="WHITE">
+                     <styleClass>
+                        <String fx:value="bold" />
+                        <String fx:value="font-xl" />
+                     </styleClass>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="keluarButton" onMouseClicked="#Logout" prefHeight="101.0" prefWidth="267.0" styleClass="btn-dashboard">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="37.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/keluar.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="96.0" layoutY="34.0" prefHeight="36.0" prefWidth="139.0" text="Keluar" textFill="WHITE">
+                     <styleClass>
+                        <String fx:value="bold" />
+                        <String fx:value="font-xl" />
+                     </styleClass>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children></VBox>
+      <HBox alignment="CENTER_LEFT" layoutX="267.0" prefHeight="89.0" prefWidth="1033.0" styleClass="header">
+         <children>
+            <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/profile.png" />
+               </image>
+            </ImageView>
+            <VBox alignment="CENTER_LEFT" prefHeight="89.0" prefWidth="236.0" styleClass="welcome-container">
+               <children>
+                  <Label styleClass="light" text="Selamat Datang!" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <Label fx:id="namaUser" styleClass="medium" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Label layoutX="305.0" layoutY="134.0" text="Stok Barang">
+         <styleClass>
+            <String fx:value="font-xl" />
+            <String fx:value="bold" />
+         </styleClass>
+      </Label>
+      <VBox layoutX="305.0" layoutY="186.0" prefHeight="377.0" prefWidth="749.0" styleClass="stock-container">
+         <children>
+            <HBox prefHeight="188.5" prefWidth="200.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="189.0" prefWidth="345.0" style="-fx-background-color: white;" styleClass="stock-container">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets left="30.0" />
+                           </HBox.margin>
+                           <image>
+                              <Image url="@../assets/minyak_goreng.png" />
+                           </image>
+                        </ImageView>
+                        <VBox alignment="CENTER_LEFT" prefHeight="115.0" prefWidth="172.0">
+                           <children>
+                              <Label styleClass="bold" text="Minyak Goreng">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label styleClass="regular" text="10 Barang">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="189.0" prefWidth="374.5" style="-fx-background-color: white;">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets left="30.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="25.0" />
+                     </HBox.margin>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox prefHeight="188.5" prefWidth="200.0" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -82,7 +86,7 @@
                      <font>
                         <Font size="18.0" />
                      </font></Label>
-                  <Label fx:id="namaUser" styleClass="medium" text="Kasir 1" textFill="WHITE">
+                  <Label fx:id="namaUser" styleClass="medium" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -91,5 +95,150 @@
             </VBox>
          </children>
       </HBox>
+      <VBox layoutX="267.0" layoutY="89.0" prefHeight="613.0" prefWidth="961.0" styleClass="main-dashboard">
+         <children>
+            <Label text="Stok Barang">
+               <styleClass>
+                  <String fx:value="font-xl" />
+                  <String fx:value="bold" />
+               </styleClass>
+               <VBox.margin>
+                  <Insets bottom="30.0" />
+               </VBox.margin>
+            </Label>
+            <VBox prefHeight="377.0" prefWidth="749.0">
+               <children>
+                  <GridPane fx:id="barang_display" hgap="30.0" prefHeight="380.0" prefWidth="749.0" vgap="30.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="206.0" minHeight="10.0" prefHeight="187.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="196.0" minHeight="10.0" prefHeight="190.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="stock-container">
+                           <children>
+                              <ImageView fitHeight="139.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assets/minyak_goreng.png" />
+                                 </image>
+                              </ImageView>
+                              <VBox alignment="CENTER_LEFT" prefHeight="181.0" prefWidth="217.0" styleClass="stock-label">
+                                 <children>
+                                    <Label styleClass="bold" text="Minyak Goreng">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="minyakGorengValue" styleClass="regular">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="stock-container" GridPane.columnIndex="1">
+                           <children>
+                              <ImageView fitHeight="139.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assets/sabun.png" />
+                                 </image>
+                              </ImageView>
+                              <VBox alignment="CENTER_LEFT" prefHeight="181.0" prefWidth="217.0" styleClass="stock-label">
+                                 <children>
+                                    <Label styleClass="bold" text="Sabun">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="sabunValue" styleClass="regular">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="stock-container" GridPane.rowIndex="1">
+                           <children>
+                              <ImageView fitHeight="139.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assets/aqua.png" />
+                                 </image>
+                              </ImageView>
+                              <VBox alignment="CENTER_LEFT" prefHeight="181.0" prefWidth="217.0" styleClass="stock-label">
+                                 <children>
+                                    <Label styleClass="bold" text="Aqua">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="aquaValue" styleClass="regular">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="stock-container" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <children>
+                              <ImageView fitHeight="139.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assets/mie_goreng.png" />
+                                 </image>
+                              </ImageView>
+                              <VBox alignment="CENTER_LEFT" prefHeight="181.0" prefWidth="217.0" styleClass="stock-label">
+                                 <children>
+                                    <Label styleClass="bold" text="Mie Goreng">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="mieGorengValue" styleClass="regular">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </GridPane>
+               </children>
+            </VBox>
+            <VBox prefHeight="87.0" prefWidth="861.0" styleClass="total-dana-parent" VBox.vgrow="NEVER">
+               <children>
+                  <AnchorPane prefHeight="200.0" prefWidth="861.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="67.0" prefWidth="311.0" spacing="10.0" styleClass="total-dana">
+                           <children>
+                              <Label text="Total Dana:">
+                                 <styleClass>
+                                    <String fx:value="font-md" />
+                                    <String fx:value="bold" />
+                                 </styleClass>
+                              </Label>
+                              <Label fx:id="totalUang">
+                                 <styleClass>
+                                    <String fx:value="font-md" />
+                                    <String fx:value="medium" />
+                                 </styleClass>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

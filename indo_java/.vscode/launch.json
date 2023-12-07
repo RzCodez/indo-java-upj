@@ -15,8 +15,9 @@
             "name": "App",
             "request": "launch",
             "mainClass": "App",
-            "projectName": "indo_java_14e2f896",
-            "vmArgs": "--module-path \"C:/BUAT_BELAJAR_KULIAH/BELAJAR_OOP_WOY/javafx-sdk-20.0.2/lib\" --add-modules javafx.controls,javafx.fxml"  
+            // "projectName": "indo_java_14e2f896",
+            "projectName": "indo_java_24dde706",
+            "vmArgs": "--module-path \"C:/BUAT_BELAJAR_KULIAH/BELAJAR_OOP_WOY/javafx-sdk-20.0.2/lib\" --add-modules javafx.controls,javafx.fxml"
         }
     ]
 }

@@ -11,7 +11,7 @@ public class App extends Application {
 
     private Parent root;
     private Scene scene;
-    private Stage stage;
+    // private Stage stage;
     @Override
     public void start(Stage stage) throws Exception {
         try {
