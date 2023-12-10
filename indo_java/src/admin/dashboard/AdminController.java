@@ -1,4 +1,4 @@
-package dashboard;
+package admin.dashboard;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -7,9 +7,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import Session.Session;
 
-import dashboard.transaksi.TransaksiController;
+import Session.Session;
+import admin.dashboard.transaksi.TransaksiController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -23,22 +23,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class DashboardController {
+public class AdminController {
+    @FXML
+    private AnchorPane AdminPane;
 
     @FXML
-    private AnchorPane DashboardPane;
-
-    @FXML
-    GridPane barang_display;
-
-    @FXML
-    AnchorPane dashboardButton;
-
-    @FXML
-    AnchorPane transaksiButton;
-
-    @FXML
-    AnchorPane keluarButton;
+    private GridPane barang_display;
 
     // Login User variable
     @FXML
@@ -47,25 +37,25 @@ public class DashboardController {
 
     // Variable of stok barang
     @FXML
-    Label minyakGorengValue;
+    private Label minyakGorengValue;
 
     @FXML
-    Label sabunValue;
+    private Label sabunValue;
 
     @FXML
-    Label aquaValue;
+    private Label aquaValue;
     @FXML
-    Label mieGorengValue;
+    private Label mieGorengValue;
     // End of variable of stok barang
 
     // Variable of total uang
     @FXML
-    Label totalUang;
+    private Label totalUang;
     // End of variable of total uang
 
-    Stage stage;
-    Parent root;
-    Scene scene;
+    private Stage stage;
+    private Parent root;
+    private Scene scene;
 
     private Connection connection;
     private static final String DB_URL = "jdbc:mysql://localhost:3306/db_barang";
@@ -121,8 +111,18 @@ public class DashboardController {
     }
 
     public void transaksiCta(MouseEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("./transaksi/Transaksi.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/admin/dashboard/transaksi/AdminTransaksi.fxml"));
         root = loader.load();
+
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void editCta(MouseEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/admin/dashboard/edit/AdminEdit.fxml"));
+        root = loader.load();
+
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -136,7 +136,7 @@ public class DashboardController {
         alert.setHeaderText("Kamu akan Logout!");
         alert.setContentText("Apakah anda ingin keluar?");
         if (alert.showAndWait().get() == ButtonType.OK) {
-            stage = (Stage) DashboardPane.getScene().getWindow();
+            stage = (Stage) AdminPane.getScene().getWindow();
             System.out.println("Berhasil logout");
             stage.close();
         }
@@ -148,10 +148,9 @@ public class DashboardController {
     }
 
     @FXML
-    public void initialize() throws SQLException {
+    void initialize() throws SQLException {
         displayName();
         showStock();
         getTotalUang();
     }
-
 }

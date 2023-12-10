@@ -73,7 +73,7 @@
 }
 
 .button:hover {
-    -fx-background-color: rgb(0, 82, 255);
+    -fx-background-color: #0052ff;
     /* -fx-animation: changeColor 1s linear forwards; */
 }
 
@@ -92,69 +92,83 @@
     -fx-background-color: #7435fb;
 }
 
-.header{
-    -fx-background-color: #FB7135;
-    -fx-padding:0 0 0 30px;
+.header {
+    -fx-background-color: #fb7135;
+    -fx-padding: 0 0 0 30px;
 }
 
-.welcome-container{
-    -fx-padding:0 0 0 20px;
+.welcome-container {
+    -fx-padding: 0 0 0 20px;
 }
 
 .font-xl {
     -fx-font-size: 25px;
 }
 
-.font-md{
+.font-md {
     -fx-font-size: 18px;
 }
 
-.stock-container{
+.stock-container {
     -fx-background-color: white;
     -fx-border-radius: 12px;
     -fx-background-radius: 12px;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.25), 10, 0, 0, 6);
-    -fx-padding:0 0 0 10px;
+    -fx-padding: 0 0 0 10px;
 }
 
-.barang-transaksi-card{
+.barang-transaksi-card {
     -fx-background-color: white;
     -fx-border-radius: 12px;
     -fx-background-radius: 12px;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.25), 10, 0, 0, 6);
-    -fx-padding:20px 0 0 0;
+    -fx-padding: 20px 0 0 0;
 }
 
-.main-dashboard{
-    -fx-padding:40px 50px 0 50px;
+.edit-card {
+    -fx-background-color: white;
+    -fx-border-radius: 12px;
+    -fx-background-radius: 12px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.25), 10, 0, 0, 6);
+    -fx-padding: 10px 0 0 0;
 }
 
-.total-dana-parent{
-    -fx-padding:30px 0 0 0;
+.main-dashboard {
+    -fx-padding: 40px 50px 0 50px;
 }
 
-.total-dana{
-    -fx-padding:0 0 0 20px;
+.total-dana-parent {
+    -fx-padding: 30px 0 0 0;
+}
+
+.total-dana {
+    -fx-padding: 0 0 0 20px;
     -fx-background-color: white;
     -fx-border-radius: 12px;
     -fx-background-radius: 12px;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.25), 10, 0, 0, 6);
 }
 
-.stock-label{
+.stock-label {
     -fx-padding: 0 0 0 7px;
 }
 
-.transparent-bg{
+.edit-form {
+    -fx-border-color: #fb7135;
+    -fx-border-width: 0 0 2 0;
     -fx-background-color: transparent;
 }
 
-.transaction-payment{
+.transparent-bg {
+    -fx-background-color: transparent;
+}
+
+.transaction-payment {
     -fx-border-radius: 6px;
     -fx-background-radius: 6px;
     -fx-background-color: #7435fb;
 }
 
-.transaction-payment:hover{
+.transaction-payment:hover {
     -fx-background-color: #5e22df;
 }

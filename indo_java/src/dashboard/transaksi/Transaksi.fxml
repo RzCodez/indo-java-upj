@@ -2,6 +2,7 @@
 
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
@@ -126,6 +127,9 @@
                            </styleClass>
                         </Label>
                      </children>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </VBox>
                   <VBox fx:id="sabunButton" alignment="TOP_CENTER" onMouseClicked="#sabunButton" prefHeight="222.0" prefWidth="190.0" styleClass="barang-transaksi-card">
                      <children>
@@ -147,6 +151,9 @@
                            </styleClass>
                         </Label>
                      </children>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </VBox>
                   <VBox fx:id="aquaButton" alignment="TOP_CENTER" onMouseClicked="#aquaButton" prefHeight="222.0" prefWidth="190.0" styleClass="barang-transaksi-card">
                      <children>
@@ -168,6 +175,9 @@
                            </styleClass>
                         </Label>
                      </children>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </VBox>
                   <VBox fx:id="mieGorengButton" alignment="TOP_CENTER" onMouseClicked="#mieGorengButton" prefHeight="222.0" prefWidth="190.0" styleClass="barang-transaksi-card">
                      <children>
@@ -189,6 +199,9 @@
                            </styleClass>
                         </Label>
                      </children>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </VBox>
                </children>
             </HBox>
@@ -296,7 +309,7 @@
                      </content></ScrollPane>
                   <VBox alignment="BOTTOM_LEFT" prefHeight="225.0" prefWidth="303.0">
                      <children>
-                        <AnchorPane prefHeight="75.0" prefWidth="303.0" styleClass="transaction-payment">
+                        <AnchorPane onMouseClicked="#bayarButton" prefHeight="75.0" prefWidth="303.0" styleClass="transaction-payment">
                            <children>
                               <Label layoutX="115.0" layoutY="20.0" text="Bayar" textFill="WHITE">
                                  <styleClass>
@@ -305,6 +318,9 @@
                                  </styleClass>
                               </Label>
                            </children>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </AnchorPane>
                      </children>
                   </VBox>

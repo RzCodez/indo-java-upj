@@ -46,14 +46,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="864.0" prefWidth="1300.0" style="-fx-background-color: white;" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.LoginController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="864.0" prefWidth="1300.0" style="-fx-background-color: white;" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="register.RegisterController">
    <center>
       <VBox prefHeight="864.0" prefWidth="475.0" BorderPane.alignment="CENTER">
          <children>
             <VBox prefHeight="202.0" prefWidth="856.0" />
             <VBox prefHeight="554.0" prefWidth="856.0" VBox.vgrow="ALWAYS">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="bold" text="Account Log in" textAlignment="JUSTIFY" VBox.vgrow="ALWAYS">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="bold" text="Account Sign Up" textAlignment="JUSTIFY" VBox.vgrow="ALWAYS">
                      <font>
                         <Font size="39.0" />
                      </font>
@@ -89,7 +89,7 @@
                               <Insets left="30.0" top="25.0" />
                            </VBox.margin>
                         </Label>
-                        <PasswordField fx:id="passwordInput" prefHeight="49.0" prefWidth="756.0">
+                        <PasswordField fx:id="passwordInput" prefHeight="49.0" prefWidth="276.0">
                            <VBox.margin>
                               <Insets left="30.0" right="450.0" top="15.0" />
                            </VBox.margin>
@@ -101,12 +101,11 @@
                   </VBox>
                   <HBox prefHeight="100.0" prefWidth="200.0" spacing="12.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#submit" prefHeight="51.0" prefWidth="118.0" styleClass="bold" text="Login" textFill="WHITE">
+                        <Button mnemonicParsing="false" onAction="#submit" prefHeight="51.0" prefWidth="118.0" styleClass="bold" text="Register" textFill="WHITE">
                            <HBox.margin>
                               <Insets left="30.0" />
                            </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#registerCta" prefHeight="51.0" prefWidth="118.0" styleClass="bold" text="Register" textFill="WHITE" />
                      </children>
                   </HBox>
                </children>

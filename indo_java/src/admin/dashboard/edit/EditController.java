@@ -1,4 +1,4 @@
-package dashboard;
+package admin.dashboard.edit;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -8,8 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import Session.Session;
-
-import dashboard.transaksi.TransaksiController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -18,50 +16,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class DashboardController {
-
+public class EditController {
     @FXML
-    private AnchorPane DashboardPane;
-
-    @FXML
-    GridPane barang_display;
-
-    @FXML
-    AnchorPane dashboardButton;
-
-    @FXML
-    AnchorPane transaksiButton;
-
-    @FXML
-    AnchorPane keluarButton;
-
-    // Login User variable
-    @FXML
-    Label namaUser;
-    // End of login user variable
-
-    // Variable of stok barang
-    @FXML
-    Label minyakGorengValue;
-
-    @FXML
-    Label sabunValue;
-
-    @FXML
-    Label aquaValue;
-    @FXML
-    Label mieGorengValue;
-    // End of variable of stok barang
-
-    // Variable of total uang
-    @FXML
-    Label totalUang;
-    // End of variable of total uang
+    AnchorPane EditPane;
 
     Stage stage;
     Parent root;
@@ -91,38 +53,67 @@ public class DashboardController {
         return 0;
     }
 
-    private int getTotalUang() throws SQLException {
-        try (Connection connection = DriverManager.getConnection(DB_URL, "root", "");) {
-            PreparedStatement statement = connection.prepareStatement("SELECT `total_uang` FROM `tabel_keuangan`");
-
-            int value = 0;
-            try (ResultSet resultSet = statement.executeQuery()) {
-                if (resultSet.next()) {
-                    value = resultSet.getInt("total_uang");
-                }
-            }
-            
-            totalUang.setText("Rp. " + String.valueOf(value));
-        } catch (SQLException e) {
-            throw new SQLException("Gagal mendapatkan total uang", e);
-        } finally {
-            if (connection != null) {
-                connection.close();
-            }
-        }
-        return 0;
+    @FXML
+    TextField minyakGorengForm;
+    @FXML
+    TextField sabunForm;
+    @FXML
+    TextField aquaForm;
+    @FXML
+    TextField mieGorengForm;
+    public void showStock() throws SQLException{
+        minyakGorengForm.setText(String.valueOf(getValue(1)));
+        sabunForm.setText(String.valueOf(getValue(2)));
+        aquaForm.setText(String.valueOf(getValue(3)));
+        mieGorengForm.setText(String.valueOf(getValue(4)));
     }
 
-    public void showStock() throws SQLException{
-        minyakGorengValue.setText(getValue(1) + " barang");
-        sabunValue.setText(getValue(2) + " barang");
-        aquaValue.setText(getValue(3) + " barang");
-        mieGorengValue.setText(getValue(4) + " barang");
+    public void submitForm(MouseEvent event) {
+        String minyakGoreng = minyakGorengForm.getText();
+        String sabun = sabunForm.getText();
+        String aqua = aquaForm.getText();
+        String mieGoreng = mieGorengForm.getText();
+    
+        try (Connection connection = DriverManager.getConnection(DB_URL, "root", "");) {
+            PreparedStatement statement = connection.prepareStatement("UPDATE `tabel_inventori` SET `stok_barang` = ? WHERE `id_barang` = ?");
+            
+            statement.setString(1, minyakGoreng);
+            statement.setInt(2, 1);
+            statement.addBatch();
+            
+            statement.setString(1, sabun);
+            statement.setInt(2, 2);
+            statement.addBatch();
+            
+            statement.setString(1, aqua);
+            statement.setInt(2, 3);
+            statement.addBatch();
+            
+            statement.setString(1, mieGoreng);
+            statement.setInt(2, 4);
+            statement.addBatch();
+            
+            statement.executeBatch();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Tempat untuk CTA
+    public void dashboardCta(MouseEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/admin/dashboard/AdminDashboard.fxml"));
+        root = loader.load();
+
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void transaksiCta(MouseEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("./transaksi/Transaksi.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/admin/dashboard/transaksi/AdminTransaksi.fxml"));
         root = loader.load();
+
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -136,22 +127,23 @@ public class DashboardController {
         alert.setHeaderText("Kamu akan Logout!");
         alert.setContentText("Apakah anda ingin keluar?");
         if (alert.showAndWait().get() == ButtonType.OK) {
-            stage = (Stage) DashboardPane.getScene().getWindow();
+            stage = (Stage) EditPane.getScene().getWindow();
             System.out.println("Berhasil logout");
             stage.close();
         }
     }
-
+    // End of tempat untuk CTA
+    
+    @FXML
+    Label namaUser;
     public void displayName() {
         String username = Session.getUsername();
         namaUser.setText(username);
     }
 
     @FXML
-    public void initialize() throws SQLException {
+    void initialize() throws SQLException {
         displayName();
         showStock();
-        getTotalUang();
     }
-
 }

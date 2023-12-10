@@ -1,7 +1,6 @@
-package dashboard.transaksi;
+package admin.dashboard.transaksi;
 
 import java.io.IOException;
-// import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -9,8 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import Session.Session;
-
-import dashboard.DashboardController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -29,20 +26,11 @@ public class TransaksiController {
     private AnchorPane TransaksiPane;
 
     @FXML
-    private AnchorPane keluarButton;
-
-    @FXML
     Label namaUser;
 
-    @FXML
-    private AnchorPane transaksiButton;
-
-    @FXML
-    private AnchorPane dashboardButton;
-
-    Parent root;
-    Scene scene;
-    Stage stage;
+    private Parent root;
+    private Scene scene;
+    private Stage stage;
 
     // Variable of price barang
     @FXML
@@ -142,7 +130,7 @@ public class TransaksiController {
     @FXML
     public void minyakGorengButton(MouseEvent event) throws SQLException {
         int minyakGorengStock = getValue(1);
-        if (minyakGorengStock == 0) {
+        if (minyakGorengStock < 1) {
             System.out.println("Minyak goreng habis");
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -267,7 +255,7 @@ public class TransaksiController {
         alert.setHeaderText("Total yang harus dibayarkan: ");
         alert.setContentText("Rp. " + totalHarga);
         if (alert.showAndWait().get() == ButtonType.OK) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/dashboard/transaksi/Transaksi.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/admin/dashboard/transaksi/AdminTransaksi.fxml"));
             root = loader.load();
 
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -284,10 +272,18 @@ public class TransaksiController {
     }
 
     public void dashboardCta(MouseEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/dashboard/Dashboard.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/admin/dashboard/AdminDashboard.fxml"));
         root = loader.load();
-        DashboardController dashboardController = loader.getController();
-        dashboardController.displayName();
+
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void editCta(MouseEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/admin/dashboard/edit/AdminEdit.fxml"));
+        root = loader.load();
 
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -313,5 +309,4 @@ public class TransaksiController {
         displayName();
         displayValue();
     }
-
 }

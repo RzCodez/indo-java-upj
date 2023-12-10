@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="TransaksiPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1300.0" stylesheets="@../../style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dashboard.transaksi.TransaksiController">
+<AnchorPane fx:id="TransaksiPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1300.0" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="admin.dashboard.transaksi.TransaksiController">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="800.0" prefWidth="267.0" styleClass="sidebar">
          <children>
@@ -21,7 +21,7 @@
                <children>
                   <ImageView fitHeight="89.0" fitWidth="147.0" layoutX="60.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Group%201.png" />
+                        <Image url="@../../../Group%201.png" />
                      </image>
                   </ImageView>
                </children>
@@ -30,7 +30,7 @@
                <children>
                   <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="37.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../assets/dashboard.png" />
+                        <Image url="@../../../assets/dashboard.png" />
                      </image>
                   </ImageView>
                   <Label layoutX="96.0" layoutY="34.0" prefHeight="36.0" prefWidth="139.0" text="Dashboard" textFill="WHITE">
@@ -45,7 +45,7 @@
                <children>
                   <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="37.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../assets/transaksi.png" />
+                        <Image url="@../../../assets/transaksi.png" />
                      </image>
                   </ImageView>
                   <Label layoutX="96.0" layoutY="34.0" prefHeight="36.0" prefWidth="139.0" text="Transaksi" textFill="WHITE">
@@ -56,11 +56,26 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="keluarButton" onMouseClicked="#Logout" prefHeight="101.0" prefWidth="267.0" styleClass="btn-dashboard">
+            <AnchorPane onMouseClicked="#editCta" prefHeight="101.0" prefWidth="267.0" styleClass="btn-dashboard">
                <children>
                   <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="37.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../assets/keluar.png" />
+                        <Image url="@../../../assets/edit.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="96.0" layoutY="34.0" prefHeight="36.0" prefWidth="139.0" text="Edit" textFill="WHITE">
+                     <styleClass>
+                        <String fx:value="bold" />
+                        <String fx:value="font-xl" />
+                     </styleClass>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="keluarButton1" onMouseClicked="#Logout" prefHeight="101.0" prefWidth="267.0" styleClass="btn-dashboard">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="37.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../assets/keluar.png" />
                      </image>
                   </ImageView>
                   <Label layoutX="96.0" layoutY="34.0" prefHeight="36.0" prefWidth="139.0" text="Keluar" textFill="WHITE">
@@ -76,7 +91,7 @@
          <children>
             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../assets/profile.png" />
+                  <Image url="@../../../assets/profile.png" />
                </image>
             </ImageView>
             <VBox alignment="CENTER_LEFT" prefHeight="89.0" prefWidth="236.0" styleClass="welcome-container">
@@ -111,7 +126,7 @@
                      <children>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../assets/minyak_goreng.png" />
+                              <Image url="@../../../assets/minyak_goreng.png" />
                            </image>
                         </ImageView>
                         <Label text="Minyak Goreng">
@@ -135,7 +150,7 @@
                      <children>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../assets/sabun.png" />
+                              <Image url="@../../../assets/sabun.png" />
                            </image>
                         </ImageView>
                         <Label text="Sabun">
@@ -159,7 +174,7 @@
                      <children>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../assets/aqua.png" />
+                              <Image url="@../../../assets/aqua.png" />
                            </image>
                         </ImageView>
                         <Label text="Aqua">
@@ -183,7 +198,7 @@
                      <children>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../assets/mie_goreng.png" />
+                              <Image url="@../../../assets/mie_goreng.png" />
                            </image>
                         </ImageView>
                         <Label text="Mie Goreng">
@@ -224,7 +239,7 @@
                                  <children>
                                     <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../assets/minyak_goreng.png" />
+                                          <Image url="@../../../assets/minyak_goreng.png" />
                                        </image>
                                     </ImageView>
                                     <Label text="Minyak Goreng">
@@ -245,7 +260,7 @@
                                  <children>
                                     <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../assets/sabun.png" />
+                                          <Image url="@../../../assets/sabun.png" />
                                        </image>
                                     </ImageView>
                                     <Label text="Sabun">
@@ -266,7 +281,7 @@
                                  <children>
                                     <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../assets/aqua.png" />
+                                          <Image url="@../../../assets/aqua.png" />
                                        </image>
                                     </ImageView>
                                     <Label text="Aqua">
@@ -287,7 +302,7 @@
                                  <children>
                                     <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../assets/mie_goreng.png" />
+                                          <Image url="@../../../assets/mie_goreng.png" />
                                        </image>
                                     </ImageView>
                                     <Label text="Mie Goreng">

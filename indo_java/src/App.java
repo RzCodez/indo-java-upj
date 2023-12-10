@@ -1,4 +1,5 @@
 import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,11 +12,13 @@ public class App extends Application {
 
     private Parent root;
     private Scene scene;
+
     // private Stage stage;
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) throws IOException {
         try {
             root = FXMLLoader.load(getClass().getResource("/login/Login.fxml"));
+            // root = FXMLLoader.load(getClass().getResource("/admin/dashboard/AdminDashboard.fxml"));
             scene = new Scene(root);
             stage.setTitle("Indo Java - Powered by ODGJ");
             stage.setScene(scene);
@@ -41,6 +44,7 @@ public class App extends Application {
             stage.close();
         }
     }
+
     public static void main(String[] args) {
         launch(args);
     }
