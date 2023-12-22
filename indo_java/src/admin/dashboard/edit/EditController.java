@@ -53,6 +53,13 @@ public class EditController {
         return 0;
     }
 
+    public void showStock() throws SQLException{
+        minyakGorengForm.setText(String.valueOf(getValue(1)));
+        sabunForm.setText(String.valueOf(getValue(2)));
+        aquaForm.setText(String.valueOf(getValue(3)));
+        mieGorengForm.setText(String.valueOf(getValue(4)));
+    }
+
     @FXML
     TextField minyakGorengForm;
     @FXML
@@ -61,12 +68,6 @@ public class EditController {
     TextField aquaForm;
     @FXML
     TextField mieGorengForm;
-    public void showStock() throws SQLException{
-        minyakGorengForm.setText(String.valueOf(getValue(1)));
-        sabunForm.setText(String.valueOf(getValue(2)));
-        aquaForm.setText(String.valueOf(getValue(3)));
-        mieGorengForm.setText(String.valueOf(getValue(4)));
-    }
 
     public void submitForm(MouseEvent event) {
         String minyakGoreng = minyakGorengForm.getText();
@@ -109,7 +110,7 @@ public class EditController {
         stage.setScene(scene);
         stage.show();
     }
-
+    
     public void transaksiCta(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/admin/dashboard/transaksi/AdminTransaksi.fxml"));
         root = loader.load();
@@ -120,18 +121,28 @@ public class EditController {
         stage.show();
     }
 
-    public void Logout(MouseEvent event) {
-
+    // Menghandle aksi klik tombol keluar (logout)
+    public void Logout(MouseEvent event) throws IOException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Logout");
         alert.setHeaderText("Kamu akan Logout!");
         alert.setContentText("Apakah anda ingin keluar?");
         if (alert.showAndWait().get() == ButtonType.OK) {
-            stage = (Stage) EditPane.getScene().getWindow();
-            System.out.println("Berhasil logout");
-            stage.close();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/login/Login.fxml"));
+            // Memuat FXML file dan mendapatkan root node dari tata letak yang dihasilkan
+            root = loader.load();
+            // Mendapatkan stage dari event source (tombol yang diklik) dan mengkonversinya
+            // menjadi objek Stage
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            // Membuat objek Scene baru menggunakan root node yang telah dimuat
+            scene = new Scene(root);
+            // Mengatur scene pada stage
+            stage.setScene(scene);
+            // Menampilkan stage yang telah dikonfigurasi
+            stage.show();
         }
     }
+    
     // End of tempat untuk CTA
     
     @FXML

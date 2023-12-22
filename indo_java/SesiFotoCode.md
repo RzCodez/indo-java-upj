@@ -1,27 +1,5 @@
-package login;
+```java
 
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-import Session.Session;
-import User.User;
-
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-import javafx.scene.Node;
-
-// Ini adalah class LoginController, tempat untuk mengurus sesi login
 public class LoginController {
 
     // Class PasswordField dari javafx scene layout
@@ -123,3 +101,6 @@ public class LoginController {
         stage.show();
     }
 }
+
+
+```
