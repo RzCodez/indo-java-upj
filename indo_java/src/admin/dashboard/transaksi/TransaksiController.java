@@ -17,13 +17,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class TransaksiController {
-    @FXML
-    private AnchorPane TransaksiPane;
 
     @FXML
     Label namaUser;
@@ -65,10 +62,12 @@ public class TransaksiController {
     VBox mieGorengButton;
     // End of variable of button
 
+    // variable koneksi
     private Connection connection;
     private static final String DB_URL = "jdbc:mysql://localhost:3306/db_barang";
 
     @FXML
+    // Method untuk mendapatkan harga barang
     private int getHargaValue(int id_barang) throws SQLException {
         int hargaBarang = 0;
         try (Connection connection = DriverManager.getConnection(DB_URL, "root", "")) {
@@ -92,6 +91,7 @@ public class TransaksiController {
         return hargaBarang;
     }
 
+    // Method untuk mencetak harga barang dari method getHargaValue
     public void displayValue() throws SQLException {
         minyakGorengPrice.setText("Rp. " + getHargaValue(1));
         sabunPrice.setText("Rp. " + getHargaValue(2));
@@ -99,6 +99,7 @@ public class TransaksiController {
         mieGorengPrice.setText("Rp. " + getHargaValue(4));
     }
 
+    //Method untuk mendapatkan value stok barang
     private int getValue(int id_barang) throws SQLException {
         try (Connection connection = DriverManager.getConnection(DB_URL, "root", "");) {
             PreparedStatement statement = connection
@@ -120,13 +121,15 @@ public class TransaksiController {
         }
         return 0;
     }
-
+    
+    //Variabel untuk menyimpan value dari hasil increment
     private int jumlahMinyakGoreng = 0;
     private int jumlahSabun = 0;
     private int jumlahAqua = 0;
     private int jumlahMieGoreng = 0;
     private int totalHarga = 0;
 
+    //Method untuk tombol card minyak goreng
     @FXML
     public void minyakGorengButton(MouseEvent event) throws SQLException {
         int minyakGorengStock = getValue(1);
@@ -144,6 +147,7 @@ public class TransaksiController {
         }
     }
 
+    //Method untuk tombol card sabun 
     @FXML
     public void sabunButton(MouseEvent event) throws SQLException {
         int sabunStock = getValue(2);
@@ -161,6 +165,8 @@ public class TransaksiController {
         }
     }
 
+    
+    //Method untuk tombol card aqua
     @FXML
     public void aquaButton(MouseEvent event) throws SQLException {
         int aquaStock = getValue(3);
@@ -178,6 +184,7 @@ public class TransaksiController {
         }
     }
 
+    //Method untuk tombol card mie goreng
     @FXML
     public void mieGorengButton(MouseEvent event) throws SQLException {
         int mieGorengStock = getValue(4);
@@ -195,6 +202,7 @@ public class TransaksiController {
         }
     }
 
+    // Method untuk update stok ke database
     public void updateStock() throws SQLException {
         try (Connection connection = DriverManager.getConnection(DB_URL, "root", "")) {
             PreparedStatement statement = connection.prepareStatement(
@@ -220,6 +228,7 @@ public class TransaksiController {
     
 
     @FXML
+    // Method untuk update keuangan dari hasil transaksi
     private void updateKeuangan() throws SQLException {
         // Retrieve the current value of total_uang from the database
         int currentTotalUang = 0;
@@ -246,6 +255,7 @@ public class TransaksiController {
     }
 
     @FXML
+    // Method untuk tombol bayar
     public void bayarButton(MouseEvent event) throws SQLException, IOException {
         updateStock();
         updateKeuangan();
@@ -265,12 +275,13 @@ public class TransaksiController {
         }
     }
 
+    // Method untuk menampilkan username
     public void displayName() {
-        // LoginController loginController = new LoginController();
         String username = Session.getUsername();
         namaUser.setText(username);
     }
 
+    // Menghandle aksi klik tombol dashboard
     public void dashboardCta(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/admin/dashboard/AdminDashboard.fxml"));
         root = loader.load();
@@ -281,6 +292,7 @@ public class TransaksiController {
         stage.show();
     }
 
+    // Menghandle aksi klik tombol edit
     public void editCta(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/admin/dashboard/edit/AdminEdit.fxml"));
         root = loader.load();

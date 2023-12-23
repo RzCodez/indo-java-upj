@@ -1,106 +1,141 @@
 ```java
 
-public class LoginController {
+public class EditController {
 
-    // Class PasswordField dari javafx scene layout
-    @FXML
-    PasswordField passwordInput;
-    // Class TextField dari javafx scene layout
-    @FXML
-    TextField usernameInput;
-    // Class induk dari semua kelas tampilan grafis di JavaFX
-    Parent root;
-    // Class ini berisi semua objek tampilan grafis yang akan ditampilkan di layar.
-    Scene scene;
-    // Class untuk menampilkan scene
     Stage stage;
+    Parent root;
+    Scene scene;
 
-    // URL database
+    private Connection connection;
     private static final String DB_URL = "jdbc:mysql://localhost:3306/db_barang";
 
-    // Metode ini dipanggil saat tombol "Submit" ditekan
-    public void submit(ActionEvent event) throws IOException, SQLException {
-        // Mendapatkan nilai username dan password dari input pengguna
-        String username = usernameInput.getText();
-        String password = passwordInput.getText();
-
-        // Memanggil metode authenticateUser untuk memeriksa kredensial
-        User authenticatedUser = authenticateUser(username, password);
-
-        // Jika kredensial valid, lanjutkan ke dashboard yang sesuai
-        if (authenticatedUser != null) {
-            System.out.println("Login berhasil!");
-            System.out.println("Selamat datang, " + authenticatedUser.getUsername() + "!");
-            // Menyimpan nama pengguna dalam sesi
-            Session.setUsername(authenticatedUser.getUsername());
-
-            // Memuat tampilan berdasarkan peran pengguna (admin atau pengguna biasa)
-            FXMLLoader loader;
-            if (authenticatedUser.getRole().equals("admin")) {
-                loader = new FXMLLoader(getClass().getResource("/admin/dashboard/AdminDashboard.fxml"));
-                root = loader.load();
-            } else {
-                loader = new FXMLLoader(getClass().getResource("/dashboard/Dashboard.fxml"));
-                root = loader.load();
-            }
-
-            // Menyiapkan tampilan dan menampilkannya
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        } else {
-            // Menampilkan pesan kesalahan jika kredensial tidak valid
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Gagal Login");
-            alert.setHeaderText(null);
-            alert.setContentText("Username atau password salah");
-            alert.showAndWait();
-        }
-    }
-
-    // Metode untuk mengautentikasi pengguna dengan username dan password
-    private User authenticateUser(String username, String password) throws SQLException {
-        try (Connection connection = DriverManager.getConnection(DB_URL, "root", "")) {
-            // Membuat pernyataan SQL untuk mencari pengguna dengan username dan password
-            // tertentu
-            PreparedStatement statement = connection.prepareStatement(
-                    "SELECT username, password, role FROM `tabel_user` WHERE BINARY username = ? AND password = ?");
-
-            // Menetapkan parameter pada pernyataan SQL
-            statement.setString(1, username);
-            statement.setString(2, password);
-
-            // Mengeksekusi pernyataan SQL dan mendapatkan hasil
+    private int getValue(int id_barang) throws SQLException {
+        try (Connection connection = DriverManager.getConnection(DB_URL, "root", "");) {
+            PreparedStatement statement = connection.prepareStatement("SELECT `stok_barang` FROM `tabel_inventori` WHERE `id_barang` = ?");
+    
+            statement.setInt(1, id_barang);
+    
             try (ResultSet resultSet = statement.executeQuery()) {
-                // Jika ada hasil, membuat objek User dan mengembalikannya
                 if (resultSet.next()) {
-                    User user = new User();
-                    user.setUsername(resultSet.getString("username"));
-                    user.setPassword(resultSet.getString("password"));
-                    user.setRole(resultSet.getString("role"));
-                    return user;
+                    return resultSet.getInt("stok_barang");
                 }
             }
         } catch (SQLException e) {
-            // Menangani kesalahan SQL dengan mencetak stack trace
-            e.printStackTrace();
+            throw new SQLException("Gagal mendapatkan nilai barang", e);
+        } finally {
+            if (connection != null) {
+                connection.close();
+            }
         }
-        // Mengembalikan null jika autentikasi gagal
-        return null;
+        return 0;
     }
 
-    // Metode ini dipanggil saat tombol "Register" ditekan untuk pindah ke halaman
-    // pendaftaran
-    public void registerCta(ActionEvent event) throws IOException {
-        // Memuat tampilan pendaftaran dan menampilkan halaman tersebut
-        root = FXMLLoader.load(getClass().getResource("/register/Register.fxml"));
+    public void showStock() throws SQLException{
+        minyakGorengForm.setText(String.valueOf(getValue(1)));
+        sabunForm.setText(String.valueOf(getValue(2)));
+        aquaForm.setText(String.valueOf(getValue(3)));
+        mieGorengForm.setText(String.valueOf(getValue(4)));
+    }
+
+    @FXML
+    TextField minyakGorengForm;
+    @FXML
+    TextField sabunForm;
+    @FXML
+    TextField aquaForm;
+    @FXML
+    TextField mieGorengForm;
+
+    public void submitForm(MouseEvent event) {
+        String minyakGoreng = minyakGorengForm.getText();
+        String sabun = sabunForm.getText();
+        String aqua = aquaForm.getText();
+        String mieGoreng = mieGorengForm.getText();
+    
+        try (Connection connection = DriverManager.getConnection(DB_URL, "root", "");) {
+            PreparedStatement statement = connection.prepareStatement("UPDATE `tabel_inventori` SET `stok_barang` = ? WHERE `id_barang` = ?");
+            
+            statement.setString(1, minyakGoreng);
+            statement.setInt(2, 1);
+            statement.addBatch();
+            
+            statement.setString(1, sabun);
+            statement.setInt(2, 2);
+            statement.addBatch();
+            
+            statement.setString(1, aqua);
+            statement.setInt(2, 3);
+            statement.addBatch();
+            
+            statement.setString(1, mieGoreng);
+            statement.setInt(2, 4);
+            statement.addBatch();
+            
+            statement.executeBatch();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Tempat untuk CTA
+    public void dashboardCta(MouseEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/admin/dashboard/AdminDashboard.fxml"));
+        root = loader.load();
+
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
+    
+    public void transaksiCta(MouseEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/admin/dashboard/transaksi/AdminTransaksi.fxml"));
+        root = loader.load();
+
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    // Menghandle aksi klik tombol keluar (logout)
+    public void Logout(MouseEvent event) throws IOException {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Logout");
+        alert.setHeaderText("Kamu akan Logout!");
+        alert.setContentText("Apakah anda ingin keluar?");
+        if (alert.showAndWait().get() == ButtonType.OK) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/login/Login.fxml"));
+            // Memuat FXML file dan mendapatkan root node dari tata letak yang dihasilkan
+            root = loader.load();
+            // Mendapatkan stage dari event source (tombol yang diklik) dan mengkonversinya
+            // menjadi objek Stage
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            // Membuat objek Scene baru menggunakan root node yang telah dimuat
+            scene = new Scene(root);
+            // Mengatur scene pada stage
+            stage.setScene(scene);
+            // Menampilkan stage yang telah dikonfigurasi
+            stage.show();
+        }
+    }
+    
+    // End of tempat untuk CTA
+    
+    @FXML
+    Label namaUser;
+    public void displayName() {
+        String username = Session.getUsername();
+        namaUser.setText(username);
+    }
+
+    @FXML
+    void initialize() throws SQLException {
+        displayName();
+        showStock();
+    }
 }
+
 
 
 ```
